@@ -3,22 +3,29 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     public Transform cameraOrientation;
-    public float cameraSensitivityX;
-    public float cameraSensitivityY;
+    float cameraSpeedX;
+    float cameraSpeedY;
+    public float cameraSensitivity;
     float xRotation;
     float yRotation;
 
+    public void CameraSensitivity()
+    {
+        cameraSpeedX = cameraSpeedX + cameraSensitivity;
+        cameraSpeedY = cameraSpeedY + cameraSensitivity;
+    }
     private void Start()
     {
         // Locks the cursor and disables cursor visibility
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        CameraSensitivity();
     }
     private void Update()
     {
         // Gets the mouse inputs of the player, on both the X and Y axis planes
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * cameraSensitivityX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * cameraSensitivityY;
+        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * cameraSpeedX;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * cameraSpeedY;
         // Assigns the X and Y rotations to the X and Y axis inputs
         yRotation += mouseX;
         xRotation -= mouseY;

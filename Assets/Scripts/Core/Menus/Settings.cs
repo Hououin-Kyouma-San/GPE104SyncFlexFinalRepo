@@ -1,17 +1,14 @@
 using UnityEngine;
 
-public class Resume : MonoBehaviour
+public class Settings : MonoBehaviour
 {
     [SerializeField] private GameObject pauseDisplay;
     [SerializeField] private GameObject settingsDisplay;
 
     // Disables pause menu, starts game time, amd disables cursor
-    public void ResumeGame()
+    public void ChangeSettings()
     {
         pauseDisplay.SetActive(false);
-        settingsDisplay.SetActive(false);
-        Time.timeScale = 1.0f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        settingsDisplay.SetActive(true);
     }
 }
