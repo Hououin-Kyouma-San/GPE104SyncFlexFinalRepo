@@ -10,11 +10,13 @@ public class Pause : MonoBehaviour
     {
         pauseDisplay.SetActive(false);
     }
-    // Enables pause menu and stops game time
+    // Enables pause menu, stops game time, amd enables cursor
     public void PauseGame()
     {
         pauseDisplay.SetActive(true);
         Time.timeScale = 0.0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     private void Update()
     {
