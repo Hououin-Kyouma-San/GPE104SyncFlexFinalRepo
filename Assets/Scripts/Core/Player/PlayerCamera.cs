@@ -6,26 +6,31 @@ public class PlayerCamera : MonoBehaviour
 {
     public Transform cameraOrientation;
     public TextMeshProUGUI sensitivityCounter;
-    //public Image sensitivityBar;
-    float cameraSpeedX;
-    float cameraSpeedY;
+    public Image sensitivityBar;
+    //float cameraSpeedX;
+    //float cameraSpeedY;
     float currentSensitivity;
     public float cameraSensitivity;
-    //public float maxSensitivity = 1000.0f;
+    public float maxSensitivity = 1000;
     float xRotation;
     float yRotation;
 
     public void CameraSensitivity()
     {
         currentSensitivity = cameraSensitivity;
+        //if (FindFirstObjectByType<Settings>() != null)
+        //{
+        //    FindFirstObjectByType<Settings>().CameraSensitivity();
+        //}
     }
-    public void UpdateSensitivityCounter()
-    {
-        if (sensitivityCounter != null)
-        {
-            sensitivityCounter.text = "" + (Mathf.Round(cameraSensitivity * 1)) / 100;
-        }
-    }
+    //public void UpdateSensitivityCounter()
+    //{
+    //    if (sensitivityCounter != null)
+    //    {
+    //        sensitivityCounter.text = "" + (Mathf.Round(cameraSensitivity * 1)) / 100;
+    //        sensitivityBar.fillAmount = currentSensitivity / maxSensitivity;
+    //    }
+    //}
     private void Start()
     {
         // Locks the cursor and disables cursor visibility
@@ -33,7 +38,7 @@ public class PlayerCamera : MonoBehaviour
         Cursor.visible = false;
         CameraSensitivity();
     }
-    private void LateUpdate()
+    private void Update()
     {
         // Gets the mouse inputs of the player, on both the X and Y axis planes
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * /*cameraSpeedX*/ currentSensitivity;
@@ -45,6 +50,7 @@ public class PlayerCamera : MonoBehaviour
         // Controls rotation and orientation
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         cameraOrientation.rotation = Quaternion.Euler(0, yRotation, 0);
-        UpdateSensitivityCounter();
+        //UpdateSensitivityCounter();
+        CameraSensitivity();
     }
 }
