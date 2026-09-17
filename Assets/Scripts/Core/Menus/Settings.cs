@@ -8,7 +8,6 @@ public class Settings : MonoBehaviour
     [SerializeField] private GameObject settingsDisplay;
     private float currentSensitivity;
     private float maxSensitivity;
-    //public float cameraSensitivity;
     public TextMeshProUGUI sensitivityCounter;
     public Image sensitivityBar;
     public Scrollbar sensitivityScrollbar;
@@ -19,12 +18,9 @@ public class Settings : MonoBehaviour
         pauseDisplay.SetActive(false);
         settingsDisplay.SetActive(true);
     }
-
-    //AAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
     public void CameraSensitivity()
     {
         FindFirstObjectByType<PlayerCamera>().cameraSensitivity = currentSensitivity;
-        //currentSensitivity = cameraSensitivity;
     }
     public void UpdateSensitivityCounter()
     {
@@ -33,7 +29,6 @@ public class Settings : MonoBehaviour
             maxSensitivity = FindFirstObjectByType<PlayerCamera>().maxSensitivity;
             sensitivityCounter.text = "" + (Mathf.Round(FindFirstObjectByType<PlayerCamera>().cameraSensitivity * 1)) / 100;
             sensitivityBar.fillAmount = currentSensitivity / maxSensitivity;
-            //sensitivityScrollbar.value = currentSensitivity / maxSensitivity;
         }
     }
     public void ChangeSensitivity(Scrollbar amount)

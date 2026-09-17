@@ -7,8 +7,6 @@ public class PlayerCamera : MonoBehaviour
     public Transform cameraOrientation;
     public TextMeshProUGUI sensitivityCounter;
     public Image sensitivityBar;
-    //float cameraSpeedX;
-    //float cameraSpeedY;
     float currentSensitivity;
     public float cameraSensitivity;
     public float maxSensitivity = 1000;
@@ -18,19 +16,7 @@ public class PlayerCamera : MonoBehaviour
     public void CameraSensitivity()
     {
         currentSensitivity = cameraSensitivity;
-        //if (FindFirstObjectByType<Settings>() != null)
-        //{
-        //    FindFirstObjectByType<Settings>().CameraSensitivity();
-        //}
     }
-    //public void UpdateSensitivityCounter()
-    //{
-    //    if (sensitivityCounter != null)
-    //    {
-    //        sensitivityCounter.text = "" + (Mathf.Round(cameraSensitivity * 1)) / 100;
-    //        sensitivityBar.fillAmount = currentSensitivity / maxSensitivity;
-    //    }
-    //}
     private void Start()
     {
         // Locks the cursor and disables cursor visibility
